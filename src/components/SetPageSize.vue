@@ -46,6 +46,8 @@ const toggleDropdown = () => dropdownIsActive.value = !dropdownIsActive.value;
 const setPageSizeValue = (value: number) => {
     pageSize.value = value;
     setPageSize(value);
+
+    //To refresh the set table after page size changes
     fetchSets();
 }
 </script>
