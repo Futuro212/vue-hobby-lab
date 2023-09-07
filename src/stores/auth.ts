@@ -26,7 +26,8 @@ export const useAuthStore = defineStore({
     async register({email, password, name}) {
       const response = await createUserWithEmailAndPassword(auth, email, password);
       if (response) {
-        this.setUser(response.user);
+        const newUserData = {...response.user, ...{displayName: name}}
+        this.setUser(newUserData);
         updateProfile(response.user, {displayName: name});
       } else {
           throw new Error('Unable to register user')

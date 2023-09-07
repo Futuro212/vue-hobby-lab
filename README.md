@@ -4,11 +4,20 @@ This is a tool to have some basic authentication using firebase auth and using R
 
 ## Objectives
 - [ ] Using firebase/auth for basic authentication
-    - [x] Login / Logout / Register
+    - [X] Login / Logout / Register
     - [ ] Email Confirmation
 - [ ] Using Brickable API to retrieve info about LEGO sets
 - [ ] Store lego sets per user logged in
-- [ ] Use Bulma for Styling
+- [X] Have Sass installed
+- [X] Use Bulma for Styling (with Sass)
+- [ ] Styling
+    - [X] Navbar
+    - [ ] Login Page
+    - [ ] Register Page
+    - [ ] Dashboard Page
+    - [ ] Lego Pagination
+    - [ ] Lego Detail
+    
 
 ## Firebase Configurations
 
