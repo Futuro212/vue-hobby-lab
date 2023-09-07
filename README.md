@@ -10,8 +10,13 @@ This is a tool to have some basic authentication using firebase auth and using R
 - [ ] Store lego sets per user logged in
 - [ ] Use Bulma for Styling
 
+## Firebase Configurations
 
-### Compile and Hot-Reload for Development
+For the tool to run you need to get the API keys for firebase, you can check the file .env.example to see what are the values needed to run the application.
+
+Don't forget that you need to create a ".env" file in the root of the project!
+
+## How to Compile and Hot-Reload for Development
 
 ```sh
 npm run dev
