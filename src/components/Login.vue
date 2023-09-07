@@ -6,7 +6,7 @@
                     Login
                 </p>
                 
-                <div v-if="error" class="alert alert-danger">{{error}}</div>
+                <div v-if="error" class="error">{{error}}</div>
 
                 <form action="#" @submit.prevent="LoginSubmit">
                     <div class="field">
@@ -80,5 +80,11 @@ const LoginSubmit = async () => {
     margin-left: 3em;
     margin-right: 3em;
     min-width: 350px;
+}
+
+.error {
+    color: red;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
 }
 </style>
