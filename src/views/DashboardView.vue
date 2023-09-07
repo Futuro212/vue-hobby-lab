@@ -1,19 +1,10 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-            <div class="card">
-                aaaaaaaaa
-            </div>
-            </div>
-        </div>
-    </div>
+    <Greetings/>
 </template>
 
 <script setup lang="ts">
-
+import Greetings from '@/components/Greetings.vue';
     
-
 </script>
 
 <style lang="sass">

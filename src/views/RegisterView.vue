@@ -1,5 +1,5 @@
 <template>
-    <Register></Register>
+    <Register/>
 </template>
 
 <script setup lang="ts">

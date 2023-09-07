@@ -3,7 +3,7 @@
     <div class="navbar-brand">
 
       <RouterLink class="navbar-item" to="/">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/500px-LEGO_logo.svg.png?20221012140704" width="54">
+        <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/500px-LEGO_logo.svg.png?20221012140704" width="54">
       </RouterLink>
 
       <button role="button" @click="toggleNav" class="navbar-burger" :class="{'is-active': mobileNavIsActive}" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -15,14 +15,17 @@
 
     <div id="navbarBasicExample" :class="{'is-active': mobileNavIsActive}" class="navbar-menu">
       <div class="navbar-start">
-        <RouterLink class="navbar-item" to="/">Home</RouterLink>
 
         <a v-if="user.loggedIn" class="navbar-item">
           My Legos
         </a>
 
+        <a v-if="user.loggedIn" class="navbar-item">
+          Wishlist
+        </a>
+
         <a class="navbar-item">
-          Documentation
+          Collections
         </a>
 
       </div>
@@ -71,6 +74,10 @@
 </script>
 
 <style lang="scss">
+#logo{
+  max-height: unset;
+}
+
 .navbar-burger {
   align-self: center;
 }

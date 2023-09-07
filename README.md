@@ -14,13 +14,15 @@ This is a tool to have some basic authentication using firebase auth and using R
     - [X] Navbar
     - [X] Background for Login and Register
     - [X] Login Page
-    - [ ] Register Page
+    - [X] Register Page
     - [ ] Dashboard Page
+        - [ ] Greeting component for not logged in
+        - [ ] Dashboard for logged in
     - [ ] Lego Pagination
     - [ ] Lego Detail
 
 ## Things to be fixed
-- [ ] Logo Sizing in Navbar
+- [X] Logo Sizing in Navbar
     
 
 ## Firebase Configurations
