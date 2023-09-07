@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/LoginView.vue';
 import Register from '../views/RegisterView.vue';
 import Dashboard from '../views/DashboardView.vue';
+import Sets from '../views/SetsView.vue';
+import Set from '../views/SetView.vue';
 
 
 const routes = [
@@ -19,6 +21,16 @@ const routes = [
         path: '/',
         name: 'Dashboard',
         component: Dashboard
+    },
+    {
+        path: '/sets',
+        name: 'Sets',
+        component: Sets
+    },
+    { 
+        path: '/sets/:id', 
+        name: 'set', 
+        component: Set 
     }
 ]
 

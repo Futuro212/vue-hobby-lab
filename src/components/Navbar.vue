@@ -24,9 +24,7 @@
           Wishlist
         </a>
 
-        <a class="navbar-item">
-          Collections
-        </a>
+        <RouterLink class="navbar-item" to="/sets">Lego Sets</RouterLink>
 
       </div>
 

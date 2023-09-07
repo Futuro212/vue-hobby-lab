@@ -14,4 +14,5 @@
 
 <style lang="scss">
   @import "../node_modules/bulma/bulma";
+  @import '@fortawesome/fontawesome-free/css/all.min.css'
 </style>

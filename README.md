@@ -16,7 +16,7 @@ This is a tool to have some basic authentication using firebase auth and using R
     - [X] Login Page
     - [X] Register Page
     - [ ] Dashboard Page
-        - [ ] Greeting component for not logged in
+        - [X] Greeting component for not logged in
         - [ ] Dashboard for logged in
     - [ ] Lego Pagination
     - [ ] Lego Detail
