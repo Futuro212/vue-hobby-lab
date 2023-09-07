@@ -19,13 +19,15 @@ This is a tool to have some basic authentication using firebase auth and using R
         - [X] Greeting component for not logged in
         - [ ] Dashboard for logged in
     - [ ] Lego Pagination
-        - [X] Set page size
+        - [ ] Set page size
+            - [ ] Update Page Params
+            - [X] Apply changes on set page size
         - [ ] Pagination
             - [ ] Show page numbers
             - [ ] Show next and Previous
-        - [ ] Set table
+        - [X] Set table
             - [X] Set details
-            - [ ] Link to Lego Detail
+            - [X] Link to Lego Detail
     - [ ] Lego Detail
         - [ ] Add to wishlist
         - [ ] Add to "Added"
@@ -34,11 +36,12 @@ This is a tool to have some basic authentication using firebase auth and using R
 ## Things to be fixed
 - [X] Logo Sizing in Navbar
 - [ ] Background image not repeating horizontally
+- [ ] Set table out of bounds in mobile
     
 
-## Firebase Configurations
+## Firebase and Rebrickable Configurations
 
-For the tool to run you need to get the API keys for firebase, you can check the file .env.example to see what are the values needed to run the application.
+For the tool to run you need to get the API keys for firebase and rebrickable, you can check the file .env.example to see what are the values needed to run the application.
 
 Don't forget that you need to create a ".env" file in the root of the project!
 

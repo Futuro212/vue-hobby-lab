@@ -8,7 +8,8 @@
                 <th>Image</th>
                 <th>Name</th>
                 <th>Year</th>
-                <th>Number of Parts</th>
+                <th>#Parts</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +18,7 @@
                 <td>{{set.name}}</td>
                 <td>{{set.year}}</td>
                 <td>{{set.num_parts}}</td>
+                <td><RouterLink class="button is-light" :to="`sets/${set.set_num}`">More Detail</RouterLink></td>
             </tr>
         </tbody>
     </table>
