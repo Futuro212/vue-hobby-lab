@@ -1,8 +1,9 @@
 <template>
+    <Register></Register>
     <div>REGISTER</div>
     <div v-if="error" class="alert alert-danger">{{error}}</div>
     <div>
-        <form action="#" @submit.prevent="Register">
+        <form action="#" @submit.prevent="RegisterSubmit">
               <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
 
@@ -63,6 +64,8 @@
 </template>
 
 <script setup lang="ts">
+import Register from '@/components/Register.vue';
+
     import { ref } from 'vue';
     import { useRouter } from 'vue-router'
     import { useAuthStore } from '../stores/auth'
@@ -75,7 +78,7 @@
     const store = useAuthStore()
     const router = useRouter()
 
-    const Register = async () => {
+    const RegisterSubmit = async () => {
         try {
             await store.register({email: email.value, password: password.value, name: name.value});
             router.push('/');

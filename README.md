@@ -12,11 +12,15 @@ This is a tool to have some basic authentication using firebase auth and using R
 - [X] Use Bulma for Styling (with Sass)
 - [ ] Styling
     - [X] Navbar
-    - [ ] Login Page
+    - [X] Background for Login and Register
+    - [X] Login Page
     - [ ] Register Page
     - [ ] Dashboard Page
     - [ ] Lego Pagination
     - [ ] Lego Detail
+
+## Things to be fixed
+- [ ] Logo Sizing in Navbar
     
 
 ## Firebase Configurations
