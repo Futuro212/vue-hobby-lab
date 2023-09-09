@@ -33,7 +33,7 @@ This is a tool to have some basic authentication using firebase auth and using R
     - [ ] Lego Detail
         - [ ] Add to wishlist
         - [ ] Add to "Added"
-        - [ ] Details of Lego
+        - [X] Details of Lego
 
 ## Things to be fixed
 - [X] Logo Sizing in Navbar

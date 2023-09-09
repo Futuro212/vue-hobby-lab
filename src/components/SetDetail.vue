@@ -6,15 +6,35 @@
         <h1 class="title set-title">
             Lego Set {{ set.set_num }}
         </h1>
-        <div class="set-data">
-            <div class="set-image-container">
+        <div class="columns">
+            <div class="column">
                 <img class="set-image" :src="set.set_img_url">
             </div>
-            
-            <div class="set-data-values">
-                <div><b>Name:</b>{{ set.name }}</div>
-                <div><b>Year:</b>{{ set.year }}</div>
-                <div><b>Number of Parts:</b>{{ set.num_parts }}</div>
+            <div class="column">
+                <div>
+                    <p>
+                        <b>Name:</b>
+                    </p>
+                    <p>
+                        {{ set.name }}
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <b>Year:</b>
+                    </p>
+                    <p>
+                        {{ set.year }}
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <b>Number of Parts:</b>
+                    </p>
+                    <p>
+                        {{ set.num_parts }}
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -30,7 +50,6 @@ const route = useRoute() ;
 const { set, loading, error } = storeToRefs(useSetStore());
 const { fetchSet } = useSetStore();
 
-
 fetchSet(route.params.id);
 </script>
 
@@ -38,17 +57,9 @@ fetchSet(route.params.id);
 .set-title {
     text-align: center;
 }
-.set-data {
-    display: flex;
-}
 
 .set-image {
-    max-width: 400px
+    max-width: 100%
 }
-
-.set-data-values {
-    margin-left: 3em;
-}
-
 
 </style>

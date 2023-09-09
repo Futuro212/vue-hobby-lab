@@ -2,26 +2,28 @@
     <p v-if="loading">Loading Set...</p>
     <p v-if="error">{{ error.message }}</p>
 
-    <table class="table set-table">
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Year</th>
-                <th>#Parts</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="set in sets.results" :key="set.set_num">
-                <td><img class="set-image" :src="set.set_img_url"></td>
-                <td>{{set.name}}</td>
-                <td>{{set.year}}</td>
-                <td>{{set.num_parts}}</td>
-                <td><RouterLink class="button is-light" :to="`sets/${set.set_num}`">More Detail</RouterLink></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-container">
+        <table class="table is-bordered is-striped is-narrow is-hoverable set-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Year</th>
+                    <th>#Parts</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="set in sets.results" :key="set.set_num">
+                    <td><img class="set-image" :src="set.set_img_url"></td>
+                    <td>{{set.name}}</td>
+                    <td>{{set.year}}</td>
+                    <td>{{set.num_parts}}</td>
+                    <td><RouterLink class="button is-light" :to="`sets/${set.set_num}`">More Detail</RouterLink></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 </template>
 
