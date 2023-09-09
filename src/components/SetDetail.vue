@@ -11,7 +11,7 @@
                 <img class="set-image" :src="set.set_img_url">
             </div>
             <div class="column">
-                <div>
+                <div class="set-data">
                     <p>
                         <b>Name:</b>
                     </p>
@@ -19,7 +19,7 @@
                         {{ set.name }}
                     </p>
                 </div>
-                <div>
+                <div class="set-data">
                     <p>
                         <b>Year:</b>
                     </p>
@@ -27,13 +27,17 @@
                         {{ set.year }}
                     </p>
                 </div>
-                <div>
+                <div class="set-data">
                     <p>
                         <b>Number of Parts:</b>
                     </p>
                     <p>
                         {{ set.num_parts }}
                     </p>
+                </div>
+                <div class="buttons">
+                    <button class="button is-success">Owned</button>
+                    <button class="button is-success">In Wishlist</button>
                 </div>
             </div>
         </div>

@@ -2,13 +2,16 @@
 import { defineStore } from 'pinia'
 import { auth } from '@/firebase/init';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUser } from '@/firebase/db';
 
 export const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
     _user: {
       loggedIn: false,
-      data: null
+      data: null,
+      wishlist: new Set(),
+      owned: new Set()
     }
   }),
   getters: {
@@ -17,6 +20,12 @@ export const useAuthStore = defineStore({
     }
   },
   actions: {
+    //add to wishlist
+    //remove of wishlist
+    //add to owned
+    //remove of owned
+
+
     setLoggedIn(value) {
       this._user.loggedIn = value;
     },
@@ -26,8 +35,14 @@ export const useAuthStore = defineStore({
     async register({email, password, name}) {
       const response = await createUserWithEmailAndPassword(auth, email, password);
       if (response) {
-        const newUserData = {...response.user, ...{displayName: name}}
+        // get the firestore id
+        const userId = createUser({wishlist: this._user.wishlist , owned: this._user.owned });
+
+        // create the data for the store
+        const newUserData = {...response.user, ...{displayName: name}, userId: userId};
         this.setUser(newUserData);
+
+        //update display name on firebase
         updateProfile(response.user, {displayName: name});
       } else {
           throw new Error('Unable to register user')
