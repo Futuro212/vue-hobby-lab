@@ -1,31 +1,29 @@
-import { collection, doc, addDoc, updateDoc, getDoc } from 'firebase/firestore'
+import { collection, doc, setDoc, updateDoc, getDoc } from 'firebase/firestore'
 import { db } from './init';
 
-export const createUser = async user => {
+export const createUser = async (email, data) => {
     try {
-        const userRef = await addDoc(collection(db,'users'), user);
-        console.log("Created user with ID: ", userRef.id);
-        return userRef.id;
+        await setDoc(doc(db, "users", email), data);
     } catch (e) {
         console.error("Error adding user: ", e);
     }
 }
 
-export const getUser = async id => {
-    const userRef = doc(db, 'users', id);
+export const getUser = async email => {
+    const userRef = doc(db, 'users', email);
     const userSnap = await getDoc(userRef);
 
     if (userSnap.exists()) {
-        console.log("User data:", userSnap.data());
+        console.log("Found user data for", email);
         return userSnap.data();
       } else {
         console.error("No such user!");
       }
 }
 
-export const updateUser = async (id, userData) => {
+export const updateUser = async (email, userData) => {
     try {
-        const userRef = await doc(db, "users", id);
+        const userRef = await doc(db, "users", email);
         await updateDoc(userRef, userData);
         console.log("Updated user with ID: ", userRef.id);
     } catch (e) {

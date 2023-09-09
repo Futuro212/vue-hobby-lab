@@ -2,7 +2,7 @@
 import { defineStore } from 'pinia'
 import { auth } from '@/firebase/init';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
-import { createUser } from '@/firebase/db';
+import { createUser, getUser } from '@/firebase/db';
 
 export const useAuthStore = defineStore({
   id: 'auth',
@@ -36,7 +36,7 @@ export const useAuthStore = defineStore({
       const response = await createUserWithEmailAndPassword(auth, email, password);
       if (response) {
         // get the firestore id
-        const userId = createUser({wishlist: this._user.wishlist , owned: this._user.owned });
+        const userId = createUser(email, {wishlist: {} , owned: {}});
 
         // create the data for the store
         const newUserData = {...response.user, ...{displayName: name}, userId: userId};
@@ -50,11 +50,13 @@ export const useAuthStore = defineStore({
     },
     async login({email, password}) {
       const response = await signInWithEmailAndPassword(auth, email, password)
-        if (response) {
-          this.setUser(response.user);
-        } else {
-          throw new Error('login failed')
-        }
+      if (response) {
+        this.setUser(response.user);
+
+        //get wishlist and owned lists
+      } else {
+        throw new Error('login failed')
+      }
     },
     async logOut(){
       await signOut(auth)
