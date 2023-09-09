@@ -14,8 +14,9 @@ export const useSetStore = defineStore({
   }),
   actions: {
     async fetchSets() {
-      this.sets = []
-      this.loading = true
+      this.sets = [];
+      this.loading = true;
+      this.error = null;
       try {
         const searchParams = new URLSearchParams();
         searchParams.append("page", this.page.toString());
@@ -34,17 +35,17 @@ export const useSetStore = defineStore({
     setPageNumber(pageNumber: number) {
       this.page = pageNumber;
     },
-    // async fetchPost(id) {
-    //   this.post = null
-    //   this.loading = true
-    //   try {
-    //     this.post = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-    //     .then((response) => response.json())
-    //   } catch (error) {
-    //     this.error = error
-    //   } finally {
-    //     this.loading = false
-    //   }
-    // }
+    async fetchSet(setId) {
+      this.sets = [];
+      this.loading = true;
+      this.error = null;
+      try {
+        this.set = await rebrickableFetch(`https://rebrickable.com/api/v3/lego/sets/${setId}/`).then((response) => response.json()) 
+      } catch (error) {
+        this.error = error
+      } finally {
+        this.loading = false
+      }
+    }
   }
 })

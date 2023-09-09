@@ -13,6 +13,7 @@
 
 
 <style lang="scss">
-  @import "../node_modules/bulma/bulma";
+  @charset "utf-8";
+  @import "../node_modules/bulma/bulma.sass";
   @import '@fortawesome/fontawesome-free/css/all.min.css'
 </style>

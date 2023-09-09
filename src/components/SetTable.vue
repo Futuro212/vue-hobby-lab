@@ -1,5 +1,5 @@
 <template>
-    <p v-if="loading">Loading Sets...</p>
+    <p v-if="loading">Loading Set...</p>
     <p v-if="error">{{ error.message }}</p>
 
     <table class="table set-table">
@@ -40,6 +40,6 @@ fetchSets();
     width: 100%;
 }
 .set-image {
-    width: 200px;
+    max-width: 200px;
 }
 </style>

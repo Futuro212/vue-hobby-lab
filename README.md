@@ -20,12 +20,13 @@ This is a tool to have some basic authentication using firebase auth and using R
         - [X] Greeting component for not logged in
         - [ ] Dashboard for logged in
     - [ ] Lego Pagination
+        - [ ] Search Box
         - [ ] Set page size
             - [ ] Update Page Params
             - [X] Apply changes on set page size
         - [ ] Pagination
             - [ ] Show page numbers
-            - [ ] Show next and Previous
+            - [X] Show next and Previous
         - [X] Set table
             - [X] Set details
             - [X] Link to Lego Detail
