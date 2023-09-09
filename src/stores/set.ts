@@ -8,7 +8,7 @@ export const useSetStore = defineStore({
     set: null,
     loading: false,
     error: null,
-    pageSize: 10,
+    pageSize: 5,
     page: 1,
     search: ""
   }),
@@ -30,7 +30,10 @@ export const useSetStore = defineStore({
     },
     setPageSize(pageSize: number) {
       this.pageSize = pageSize;
-    }
+    },
+    setPageNumber(pageNumber: number) {
+      this.page = pageNumber;
+    },
     // async fetchPost(id) {
     //   this.post = null
     //   this.loading = true

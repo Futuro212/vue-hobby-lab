@@ -1,13 +1,15 @@
 <template>
     <div class="card">
         <div class="card-content">
-            <SetPageSize></SetPageSize>
-            <SetTable></SetTable>
+            <SetPageSize/>
+            <SetTable/>
+            <Pagination/>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import Pagination from "@/components/Pagination.vue";
 import SetPageSize from "@/components/SetPageSize.vue";
 import SetTable from "@/components/SetTable.vue";
 </script>

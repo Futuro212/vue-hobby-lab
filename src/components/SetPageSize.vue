@@ -17,6 +17,9 @@
                 </div>
                 <div class="dropdown-menu" id="dropdown-menu" role="menu">
                     <div class="dropdown-content">
+                        <a @click="setPageSizeValue(5)" class="dropdown-item">
+                            5
+                        </a>
                         <a @click="setPageSizeValue(10)" class="dropdown-item">
                             10
                         </a>
@@ -38,7 +41,7 @@ import { ref } from 'vue';
 import { useSetStore } from '@/stores/set';
 
 const dropdownIsActive = ref(false);
-const pageSize = ref(10);
+const pageSize = ref(5);
 
 const { setPageSize, fetchSets } = useSetStore();
 
