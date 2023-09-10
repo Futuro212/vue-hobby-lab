@@ -38,7 +38,7 @@
                 <div class="buttons">
                     <button 
                         class="button"
-                        @click.prevent="hasOwned? removeOfOwned(set.set_num): addtoOwned(set.set_num)"
+                        @click.prevent="hasOwned? removeOfOwned(set): addtoOwned(set)"
                         :class="{
                             'is-primary is-light': !hasOwned,
                             'is-success': hasOwned
@@ -48,7 +48,7 @@
                     </button>
                     <button 
                         class="button"
-                        @click.prevent="hasWishlist? removeOfWishlist(set.set_num): addtoWishlist(set.set_num)"
+                        @click.prevent="hasWishlist? removeOfWishlist(set): addtoWishlist(set)"
                         :class="{
                             'is-primary is-light': !hasWishlist,
                             'is-success': hasWishlist
@@ -81,11 +81,11 @@ const { user } = storeToRefs(useAuthStore());
 const { addtoWishlist, removeOfWishlist, addtoOwned, removeOfOwned} = useAuthStore();
 
 const hasOwned = computed(() => {
-    return user.value.owned.includes(set.value.set_num);
+    return user.value.owned.find((ownedSet) => ownedSet.set_num === set.value.set_num);
 });
 
 const hasWishlist = computed(() => {
-    return user.value.wishlist.includes(set.value.set_num);
+    return user.value.wishlist.find((wishlistSet) => wishlistSet.set_num === set.value.set_num);
 });
 
 </script>

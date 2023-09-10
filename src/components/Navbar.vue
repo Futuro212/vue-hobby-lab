@@ -16,15 +16,12 @@
     <div id="navbarBasicExample" :class="{'is-active': mobileNavIsActive}" class="navbar-menu">
       <div class="navbar-start">
 
-        <a v-if="user.loggedIn" class="navbar-item">
-          My Legos
-        </a>
-
-        <a v-if="user.loggedIn" class="navbar-item">
-          Wishlist
-        </a>
-
         <RouterLink class="navbar-item" to="/sets">Lego Sets</RouterLink>
+        
+        <RouterLink v-if="user.loggedIn" class="navbar-item" to="/owned">My Legos</RouterLink>
+        <RouterLink v-if="user.loggedIn" class="navbar-item" to="/wishlist">Wishlist</RouterLink>
+
+
 
       </div>
 

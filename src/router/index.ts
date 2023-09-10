@@ -4,6 +4,8 @@ import Register from '../views/RegisterView.vue';
 import Dashboard from '../views/DashboardView.vue';
 import Sets from '../views/SetsView.vue';
 import Set from '../views/SetView.vue';
+import Wishlist from '../views/WishlistView.vue';
+import Owned from '../views/OwnedView.vue';
 
 
 const routes = [
@@ -31,7 +33,17 @@ const routes = [
         path: '/sets/:id', 
         name: 'set', 
         component: Set 
-    }
+    },
+    { 
+        path: '/wishlist', 
+        name: 'wishlist', 
+        component: Wishlist 
+    },
+    { 
+        path: '/owned', 
+        name: 'owned', 
+        component: Owned 
+    },
 ]
 
 

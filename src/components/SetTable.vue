@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="set in sets.results" :key="set.set_num">
+                <tr v-for="set in sets" :key="set.set_num">
                     <td><img class="set-image" :src="set.set_img_url"></td>
                     <td>{{set.name}}</td>
                     <td>{{set.year}}</td>

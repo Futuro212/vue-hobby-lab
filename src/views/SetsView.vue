@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-content">
             <SetPageSize/>
-            <SetTable :loading="loading" :error="error" :sets="sets"/>
+            <SetTable :loading="loading" :error="error" :sets="sets.results"/>
             <Pagination/>
         </div>
     </div>

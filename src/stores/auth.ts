@@ -20,23 +20,11 @@ export const useAuthStore = defineStore({
     }
   },
   actions: {
-    addtoWishlist(id) {
-      if (!this._user.wishlist.includes(id)) {
+    addtoWishlist(newSet) {
+      const foundSet = this._user.wishlist.find((set) => set.set_num === newSet.set_num);
+      if (!foundSet) {
 
-        this._user.wishlist.push(id);
-
-        //set to firestore
-        updateUser(this._user.data?.email, {
-          wishlist: this._user.wishlist
-        })
-      }
-    },
-
-    removeOfWishlist(id) {
-      if (this._user.wishlist.includes(id)) {
-
-        const index = this._user.wishlist.indexOf(id);
-        this._user.wishlist.splice(index, 1);
+        this._user.wishlist.push(newSet);
 
         //set to firestore
         updateUser(this._user.data?.email, {
@@ -45,10 +33,23 @@ export const useAuthStore = defineStore({
       }
     },
 
-    addtoOwned(id) {
-      if (!this._user.owned.includes(id)) {
+    removeOfWishlist(newSet) {
+      const foundSetIndex = this._user.wishlist.findIndex((set) => set.set_num === newSet.set_num);
+      if (foundSetIndex > -1) {
+        this._user.wishlist.splice(foundSetIndex, 1);
 
-        this._user.owned.push(id);
+        //set to firestore
+        updateUser(this._user.data?.email, {
+          wishlist: this._user.wishlist
+        })
+      }
+    },
+
+    addtoOwned(newSet) {
+      const foundSet = this._user.owned.find((set) => set.set_num === newSet.set_num);
+      if (!foundSet) {
+
+        this._user.owned.push(newSet);
 
         //set to firestore
         updateUser(this._user.data?.email, {
@@ -57,11 +58,10 @@ export const useAuthStore = defineStore({
       }
     },
 
-    removeOfOwned(id) {
-      if (this._user.owned.includes(id)) {
-
-        const index = this._user.owned.indexOf(id);
-        this._user.owned.splice(index, 1);
+    removeOfOwned(newSet) {
+      const foundSetIndex = this._user.owned.findIndex((set) => set.set_num === newSet.set_num);
+      if (foundSetIndex > -1) {
+        this._user.owned.splice(foundSetIndex, 1);
 
         //set to firestore
         updateUser(this._user.data?.email, {
