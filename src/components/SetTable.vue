@@ -2,7 +2,11 @@
     <p v-if="loading">Loading Set...</p>
     <p v-if="error">{{ error.message }}</p>
 
-    <div class="table-container">
+    <div v-if="sets.length === 0" class="set-no-results">
+        There's no lego sets to be presented here!
+    </div>
+
+    <div v-else class="table-container">
         <table class="table is-bordered is-striped is-narrow is-hoverable set-table">
             <thead>
                 <tr>
