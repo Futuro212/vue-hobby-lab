@@ -1,4 +1,4 @@
-function updateOptions(options) {
+function updateOptions(options?: RequestInit) {
     const update = { ...options };
     update.headers = {
     ...update.headers,
@@ -7,6 +7,6 @@ function updateOptions(options) {
     return update;
   }
   
-  export default function rebrickableFetch(url, options ?: any) {
+  export default function rebrickableFetch(url: string, options?: RequestInit) {
     return fetch(url, updateOptions(options));
   }

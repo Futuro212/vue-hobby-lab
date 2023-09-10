@@ -57,7 +57,7 @@ import { useAuthStore } from '../stores/auth'
 
 const email = ref('')
 const password = ref('')
-const error = ref(null)
+const error = ref('')
 
 const store = useAuthStore()
 const router = useRouter()
@@ -67,7 +67,7 @@ const LoginSubmit = async () => {
         await store.login({email: email.value, password: password.value});
         router.push("/");
     } catch (err) {
-        error.value = err.message;
+        error.value = err instanceof Error? err.message: String(err);
     }
 }
 </script>

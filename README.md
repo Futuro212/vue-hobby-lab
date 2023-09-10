@@ -11,7 +11,8 @@ This is a tool to have some basic authentication using firebase auth and using R
     - [X] Owned
 - [X] Have Sass installed
 - [X] Use Bulma for Styling (with Sass)
-- [ ] Styling
+- [ ] Types definition
+- [ ] Components/Pages
     - [X] Navbar
     - [X] Background for Login and Register
     - [X] Login Page
@@ -40,7 +41,7 @@ This is a tool to have some basic authentication using firebase auth and using R
 ## Things to be fixed
 - [X] Logo Sizing in Navbar
 - [ ] Background image not repeating horizontally
-- [ ] Set table out of bounds in mobile
+- [X] Set table out of bounds in mobile
     
 
 ## Firebase and Rebrickable Configurations

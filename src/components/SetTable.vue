@@ -2,7 +2,7 @@
     <p v-if="loading">Loading Set...</p>
     <p v-if="error">{{ error.message }}</p>
 
-    <div v-if="sets.length === 0" class="set-no-results">
+    <div v-if="sets && sets.length === 0" class="set-no-results">
         There's no lego sets to be presented here!
     </div>
 

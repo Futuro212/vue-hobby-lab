@@ -7,7 +7,7 @@ export const useSetStore = defineStore({
     sets: [],
     set: null,
     loading: false,
-    error: null,
+    error: '',
     pageSize: 5,
     page: 1,
     search: ""
@@ -16,7 +16,7 @@ export const useSetStore = defineStore({
     async fetchSets() {
       this.sets = [];
       this.loading = true;
-      this.error = null;
+      this.error = '';
       try {
         const searchParams = new URLSearchParams();
         searchParams.append("page", this.page.toString());
@@ -24,7 +24,7 @@ export const useSetStore = defineStore({
         searchParams.append("search", this.search);
         this.sets = await rebrickableFetch(`https://rebrickable.com/api/v3/lego/sets/?${searchParams.toString()}`).then((response) => response.json()) 
       } catch (error) {
-        this.error = error
+        this.error = error instanceof Error? error.message: String(error)
       } finally {
         this.loading = false
       }
@@ -35,14 +35,14 @@ export const useSetStore = defineStore({
     setPageNumber(pageNumber: number) {
       this.page = pageNumber;
     },
-    async fetchSet(setId) {
+    async fetchSet(setId: string) {
       this.sets = [];
       this.loading = true;
-      this.error = null;
+      this.error = '';
       try {
         this.set = await rebrickableFetch(`https://rebrickable.com/api/v3/lego/sets/${setId}/`).then((response) => response.json()) 
       } catch (error) {
-        this.error = error
+        this.error = error instanceof Error? error.message: String(error)
       } finally {
         this.loading = false
       }
