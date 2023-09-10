@@ -9,6 +9,11 @@
   import { RouterView, } from 'vue-router';
   import Navbar from '@/components/Navbar.vue';
   import Background from '@/components/Background.vue';
+  import { auth } from '@/firebase/init';
+  import { useAuthStore } from '@/stores/auth';
+    auth.onAuthStateChanged(user => {
+      useAuthStore().fetchUser(user);
+    });
 </script>
 
 

@@ -15,14 +15,9 @@
 
     <div id="navbarBasicExample" :class="{'is-active': mobileNavIsActive}" class="navbar-menu">
       <div class="navbar-start">
-
         <RouterLink class="navbar-item" to="/sets">Lego Sets</RouterLink>
-        
         <RouterLink v-if="user.loggedIn" class="navbar-item" to="/owned">My Legos</RouterLink>
         <RouterLink v-if="user.loggedIn" class="navbar-item" to="/wishlist">Wishlist</RouterLink>
-
-
-
       </div>
 
       <div class="navbar-end">
@@ -47,17 +42,13 @@
     import { RouterLink, useRouter } from 'vue-router'
     import { ref } from 'vue';
     import { useAuthStore } from '@/stores/auth';
-    import { auth } from '@/firebase/init';
+   
     import { storeToRefs } from 'pinia';
 
     const store = useAuthStore();
-    const router = useRouter();
-
-    auth.onAuthStateChanged(user => {
-        store.fetchUser(user);
-    });
-
     const { user } = storeToRefs(store);
+
+    const router = useRouter();
     const mobileNavIsActive = ref(false);
 
     const toggleNav = () => {mobileNavIsActive.value = !mobileNavIsActive.value }

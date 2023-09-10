@@ -6,9 +6,9 @@ This is a tool to have some basic authentication using firebase auth and using R
 - [X] Using firebase/auth for basic authentication
     - [X] Login / Logout / Register
 - [X] Using Brickable API to retrieve info about LEGO sets
-- [ ] Store lego sets per user logged in
-    - [ ] Wishlist
-    - [ ] Owned
+- [X] Store lego sets per user logged in
+    - [X] Wishlist
+    - [X] Owned
 - [X] Have Sass installed
 - [X] Use Bulma for Styling (with Sass)
 - [ ] Styling
@@ -16,9 +16,9 @@ This is a tool to have some basic authentication using firebase auth and using R
     - [X] Background for Login and Register
     - [X] Login Page
     - [X] Register Page
-    - [ ] Dashboard Page
+    - [X] Dashboard Page
         - [X] Greeting component for not logged in
-        - [ ] Dashboard for logged in
+        - [X] Dashboard for logged in
     - [ ] Lego Pagination
         - [ ] Search Box
         - [ ] Set page size
@@ -30,10 +30,12 @@ This is a tool to have some basic authentication using firebase auth and using R
         - [X] Set table
             - [X] Set details
             - [X] Link to Lego Detail
-    - [ ] Lego Detail
-        - [ ] Add to wishlist
-        - [ ] Add to "Added"
+    - [X] Lego Detail
+        - [X] Add to wishlist
+        - [X] Add to "Added"
         - [X] Details of Lego
+    - [X] Owned Page
+    - [X] Wishlist Page
 
 ## Things to be fixed
 - [X] Logo Sizing in Navbar
