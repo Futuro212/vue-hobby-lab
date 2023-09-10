@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-content">
             <SetPageSize/>
-            <SetTable/>
+            <SetTable :loading="loading" :error="error" :sets="sets"/>
             <Pagination/>
         </div>
     </div>
@@ -12,6 +12,14 @@
 import Pagination from "@/components/Pagination.vue";
 import SetPageSize from "@/components/SetPageSize.vue";
 import SetTable from "@/components/SetTable.vue";
+
+import { storeToRefs } from 'pinia';
+import { useSetStore } from '@/stores/set';
+
+const { sets, loading, error } = storeToRefs(useSetStore())
+const { fetchSets } = useSetStore();
+
+fetchSets();
 </script>
 
 <style scoped lang="scss">

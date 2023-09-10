@@ -28,13 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { useSetStore } from '@/stores/set';
-import { storeToRefs } from 'pinia';
-
-const { sets, loading, error } = storeToRefs(useSetStore())
-const { fetchSets } = useSetStore();
-
-fetchSets();
+defineProps(['loading', 'error', 'sets']);
 </script>
 
 <style scoped lang="scss">
