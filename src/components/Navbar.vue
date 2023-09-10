@@ -36,7 +36,7 @@
               <RouterLink class="button is-light" to="/login">Login</RouterLink>
             </div>
             <div class="logged-in-section" v-else>
-              <p class="greeting-message">Greetings {{ user.data.displayName }}</p>
+              <p class="greeting-message">Greetings {{ user.data?.displayName }}</p>
               <button @click.prevent="signOut" class="button is-danger">Log Out</button>
             </div>
           </div>

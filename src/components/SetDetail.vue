@@ -36,8 +36,26 @@
                     </p>
                 </div>
                 <div class="buttons">
-                    <button class="button is-success">Owned</button>
-                    <button class="button is-success">In Wishlist</button>
+                    <button 
+                        class="button"
+                        @click.prevent="hasOwned? removeOfOwned(set.set_num): addtoOwned(set.set_num)"
+                        :class="{
+                            'is-primary is-light': !hasOwned,
+                            'is-success': hasOwned
+                            }"
+                    >
+                        {{ hasOwned? 'Owned' : 'Own it?' }}
+                    </button>
+                    <button 
+                        class="button"
+                        @click.prevent="hasWishlist? removeOfWishlist(set.set_num): addtoWishlist(set.set_num)"
+                        :class="{
+                            'is-primary is-light': !hasWishlist,
+                            'is-success': hasWishlist
+                            }"
+                    >
+                        {{ hasWishlist? 'Wishlisted' : 'Wishlist it?' }}
+                    </button>
                 </div>
             </div>
         </div>
@@ -48,13 +66,28 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
 import { useSetStore } from '@/stores/set';
+import { useAuthStore } from '@/stores/auth';
 import { storeToRefs } from 'pinia';
+import { computed } from 'vue';
 
 const route = useRoute() ;
 const { set, loading, error } = storeToRefs(useSetStore());
 const { fetchSet } = useSetStore();
 
 fetchSet(route.params.id);
+
+// wishlist and owned feature
+const { user } = storeToRefs(useAuthStore());
+const { addtoWishlist, removeOfWishlist, addtoOwned, removeOfOwned} = useAuthStore();
+
+const hasOwned = computed(() => {
+    return user.value.owned.includes(set.value.set_num);
+});
+
+const hasWishlist = computed(() => {
+    return user.value.wishlist.includes(set.value.set_num);
+});
+
 </script>
 
 <style scoped lang="scss">
