@@ -23,13 +23,13 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <div class="logged-out-section" v-if="!user.loggedIn">
-              <RouterLink class="button is-primary" to="/register"><strong>Sign up</strong></RouterLink>
-              <RouterLink class="button is-light" to="/login">Login</RouterLink>
-            </div>
-            <div class="logged-in-section" v-else>
+            <div class="logged-in-section" v-if="user && user.loggedIn">
               <p class="greeting-message">Greetings {{ user.data?.displayName }}</p>
               <button @click.prevent="signOut" class="button is-danger">Log Out</button>
+            </div>
+            <div class="logged-out-section" v-else>
+              <RouterLink class="button is-primary" to="/register"><strong>Sign up</strong></RouterLink>
+              <RouterLink class="button is-light" to="/login">Login</RouterLink>
             </div>
           </div>
         </div>

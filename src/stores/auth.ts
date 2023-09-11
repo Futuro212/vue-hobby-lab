@@ -1,17 +1,19 @@
 
 import { defineStore } from 'pinia'
 import { auth } from '@/firebase/init';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, type User } from "firebase/auth";
 import { createUser, getUser, updateUser } from '@/firebase/db';
+import type { legoSet } from '@/types/set';
+import type { registerData, loginData } from '@/types/authStore';
 
 export const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
     _user: {
       loggedIn: false,
-      data: null,
-      wishlist:  [],
-      owned: []
+      data: {} as User | null,
+      wishlist: [] as legoSet[],
+      owned: [] as legoSet[]
     }
   }),
   getters: {
@@ -20,66 +22,70 @@ export const useAuthStore = defineStore({
     }
   },
   actions: {
-    addtoWishlist(newSet) {
-      const foundSet = this._user.wishlist.find((set) => set.set_num === newSet.set_num);
+    addtoWishlist(newSet: legoSet) {
+      const foundSet = this._user.wishlist.find((set: legoSet) => set.set_num === newSet.set_num);
       if (!foundSet) {
 
         this._user.wishlist.push(newSet);
 
         //set to firestore
-        updateUser(this._user.data?.email, {
+        updateUser(this._user.data?.email as string, {  //since the user always have an email
           wishlist: this._user.wishlist
         })
       }
     },
 
-    removeOfWishlist(newSet) {
+    removeOfWishlist(newSet: legoSet) {
       const foundSetIndex = this._user.wishlist.findIndex((set) => set.set_num === newSet.set_num);
       if (foundSetIndex > -1) {
         this._user.wishlist.splice(foundSetIndex, 1);
 
         //set to firestore
-        updateUser(this._user.data?.email, {
+        updateUser(this._user.data?.email as string, {  //since the user always have an email
           wishlist: this._user.wishlist
         })
       }
     },
 
-    addtoOwned(newSet) {
+    addtoOwned(newSet: legoSet) {
       const foundSet = this._user.owned.find((set) => set.set_num === newSet.set_num);
       if (!foundSet) {
 
         this._user.owned.push(newSet);
 
         //set to firestore
-        updateUser(this._user.data?.email, {
+        updateUser(this._user.data?.email as string, {  //since the user always have an email
           owned: this._user.owned
         })
       }
     },
 
-    removeOfOwned(newSet) {
+    removeOfOwned(newSet: legoSet) {
       const foundSetIndex = this._user.owned.findIndex((set) => set.set_num === newSet.set_num);
       if (foundSetIndex > -1) {
         this._user.owned.splice(foundSetIndex, 1);
 
         //set to firestore
-        updateUser(this._user.data?.email, {
+        updateUser(this._user.data?.email as string, {  //since the user always have an email
           owned: this._user.owned
         })
       }
     },
-    setLoggedIn(value) {
+    setLoggedIn(value: boolean) {
       this._user.loggedIn = value;
     },
-    setUser(value) {
+    setUser(value: User | null) {
       this._user.data = value;
     },
-    setWishlistAndOwnedSets(wishlistSet, ownedSet) {
-      this._user.wishlist = wishlistSet;
-      this._user.owned = ownedSet;
+    setWishlistAndOwnedSets(wishlistSet?: legoSet[], ownedSet?: legoSet[]) {
+      if(wishlistSet) {
+        this._user.wishlist = wishlistSet;
+      }
+      if(ownedSet) {
+        this._user.owned = ownedSet;
+      }
     },
-    async register({email, password, name}) {
+    async register({email, password, name}: registerData) {
       const response = await createUserWithEmailAndPassword(auth, email, password);
       if (response) {
         // get the firestore id
@@ -95,15 +101,15 @@ export const useAuthStore = defineStore({
           throw new Error('Unable to register user')
       }
     },
-    async login({email, password}) {
+    async login({email, password}: loginData) {
       const response = await signInWithEmailAndPassword(auth, email, password)
       if (response) {
         this.setUser(response.user);
 
         // get user info about wishlist and owned sets
-        const user = getUser(email);
-        this._user.wishlist = user.wishlist;
-        this._user.owned = user.owned;
+        const user = await getUser(email);
+        this._user.wishlist = user?.wishlist;
+        this._user.owned = user?.owned;
       } else {
         throw new Error('login failed')
       }
@@ -112,18 +118,15 @@ export const useAuthStore = defineStore({
       await signOut(auth)
       this.setUser(null)
     },
-    async fetchUser(user) {
+    async fetchUser(user: User | null) {
       this.setLoggedIn( user !== null);
       if (user) {
 
         // get user info about wishlist and owned sets
-        const loadedUser = await getUser(user.email);
+        const loadedUser = await getUser(user.email as string); //since the user always have an email
         this.setWishlistAndOwnedSets(loadedUser?.wishlist,loadedUser?.owned)
 
-        this.setUser({
-          displayName: user.displayName,
-          email: user.email,
-        });
+        this.setUser(user);
       } else {
         this.setUser(null);
       }

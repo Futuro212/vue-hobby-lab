@@ -1,6 +1,6 @@
 <template>
     <p v-if="loading">Loading Sets...</p>
-    <p v-if="error">{{ error.message }}</p>
+    <p v-if="error">{{ error }}</p>
 
     <div class="set-detail" v-if="set">
         <h1 class="title set-title">
@@ -74,7 +74,7 @@ const route = useRoute() ;
 const { set, loading, error } = storeToRefs(useSetStore());
 const { fetchSet } = useSetStore();
 
-fetchSet(route.params.id);
+fetchSet(route.params.id as string); //the param id only has a value
 
 // wishlist and owned feature
 const { user } = storeToRefs(useAuthStore());

@@ -1,11 +1,13 @@
 import { defineStore } from 'pinia';
 import rebrickableFetch from '@/utils/RebrickableFetch';
+import type { legoSet } from '@/types/set';
+import type { rebrickableResult } from '@/types/setStore';
 
 export const useSetStore = defineStore({
   id: 'set',
   state: () => ({
-    sets: [],
-    set: null,
+    sets: {} as rebrickableResult,
+    set: {} as legoSet,
     loading: false,
     error: '',
     pageSize: 5,
@@ -14,7 +16,9 @@ export const useSetStore = defineStore({
   }),
   actions: {
     async fetchSets() {
-      this.sets = [];
+      this.sets = {
+        count: 0
+      };
       this.loading = true;
       this.error = '';
       try {
@@ -36,7 +40,9 @@ export const useSetStore = defineStore({
       this.page = pageNumber;
     },
     async fetchSet(setId: string) {
-      this.sets = [];
+      this.sets = {
+        count: 0
+      };
       this.loading = true;
       this.error = '';
       try {

@@ -1,7 +1,8 @@
-import { collection, doc, setDoc, updateDoc, getDoc } from 'firebase/firestore'
+import { doc, setDoc, updateDoc, getDoc} from 'firebase/firestore'
 import { db } from './init';
+import type { userData } from '@/types/db';
 
-export const createUser = async (email, data) => {
+export const createUser = async (email: string, data: userData) => {
     try {
         await setDoc(doc(db, "users", email), data);
     } catch (e) {
@@ -9,7 +10,7 @@ export const createUser = async (email, data) => {
     }
 }
 
-export const getUser = async email => {
+export const getUser = async (email: string)=> {
     const userRef = doc(db, 'users', email);
     const userSnap = await getDoc(userRef);
 
@@ -21,10 +22,10 @@ export const getUser = async email => {
       }
 }
 
-export const updateUser = async (email, userData) => {
+export const updateUser = async (email: string, userData: userData) => {
     try {
         const userRef = await doc(db, "users", email);
-        await updateDoc(userRef, userData);
+        await updateDoc(userRef, userData );
         console.log("Updated user with ID: ", userRef.id);
     } catch (e) {
         console.error("Error updating user: ", e);
