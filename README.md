@@ -44,12 +44,12 @@ The website is hosted here: https://vuehobbylab.surge.sh/
     
 ## Nice to have
 - [ ] Lego Pagination
-        - [ ] Search Box
-        - [ ] Set page size
-            - [ ] Update Page Params
-            - [X] Apply changes on set page size
+    - [ ] Search Box
+    - [ ] Set page size
+        - [ ] Update Page Params
+        - [X] Apply changes on set page size
 - [ ] Pagination
-            - [ ] Show page numbers
+    - [ ] Show page numbers
 
 ## Firebase and Rebrickable Configurations
 
