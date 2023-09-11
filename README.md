@@ -14,7 +14,7 @@ The website is hosted here: https://vuehobbylab.surge.sh/
 - [X] Have Sass installed
 - [X] Use Bulma for Styling (with Sass)
 - [X] Types definition
-- [ ] Components/Pages
+- [X] Components/Pages
     - [X] Navbar
     - [X] Background for Login and Register
     - [X] Login Page
@@ -22,7 +22,7 @@ The website is hosted here: https://vuehobbylab.surge.sh/
     - [X] Dashboard Page
         - [X] Greeting component for not logged in
         - [X] Dashboard for logged in
-    - [ ] Lego Pagination
+    - [X] Lego Pagination
         - [X] Set page size
             - [X] Apply changes on set page size
         - [X] Pagination
