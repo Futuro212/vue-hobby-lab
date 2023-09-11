@@ -2,6 +2,8 @@
 
 This is a tool to have some basic authentication using firebase auth and using Rebrickable API to get information about LEGO sets.
 
+The website is hosted here: https://vuehobbylab.surge.sh/
+
 ## Objectives
 - [X] Using firebase/auth for basic authentication
     - [X] Login / Logout / Register
@@ -11,7 +13,7 @@ This is a tool to have some basic authentication using firebase auth and using R
     - [X] Owned
 - [X] Have Sass installed
 - [X] Use Bulma for Styling (with Sass)
-- [ ] Types definition
+- [X] Types definition
 - [ ] Components/Pages
     - [X] Navbar
     - [X] Background for Login and Register
@@ -21,12 +23,9 @@ This is a tool to have some basic authentication using firebase auth and using R
         - [X] Greeting component for not logged in
         - [X] Dashboard for logged in
     - [ ] Lego Pagination
-        - [ ] Search Box
-        - [ ] Set page size
-            - [ ] Update Page Params
+        - [X] Set page size
             - [X] Apply changes on set page size
-        - [ ] Pagination
-            - [ ] Show page numbers
+        - [X] Pagination
             - [X] Show next and Previous
         - [X] Set table
             - [X] Set details
@@ -43,6 +42,14 @@ This is a tool to have some basic authentication using firebase auth and using R
 - [ ] Background image not repeating horizontally
 - [X] Set table out of bounds in mobile
     
+## Nice to have
+- [ ] Lego Pagination
+        - [ ] Search Box
+        - [ ] Set page size
+            - [ ] Update Page Params
+            - [X] Apply changes on set page size
+- [ ] Pagination
+            - [ ] Show page numbers
 
 ## Firebase and Rebrickable Configurations
 
